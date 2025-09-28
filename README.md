@@ -199,24 +199,24 @@ The shared Dapper service provides three main methods:
         "Deleting Successfully."
 ## 🎯 Key Improvements in Updated Code
 1. Parameterized INSERT Operations
-        csharp
-        // Before (Vulnerable to SQL injection):
-        string query = $@"INSERT INTO Tbl_Student(RollNo,Name,Email,DeleteFlag) 
-                        VALUES('{StudentResModel.RollNo}','{StudentResModel.Name}','{StudentResModel.Email}',0);";
-        
-        // After (Secure parameterized query):
-        string query = @"INSERT INTO Tbl_Student(RollNo,Name,Email,DeleteFlag) 
-                        VALUES(@RollNo, @Name, @Email,0);";
-        var parameter = new StudentReqModel { ... };
+                csharp
+                // Before (Vulnerable to SQL injection):
+                string query = $@"INSERT INTO Tbl_Student(RollNo,Name,Email,DeleteFlag) 
+                                VALUES('{StudentResModel.RollNo}','{StudentResModel.Name}','{StudentResModel.Email}',0);";
+                
+                // After (Secure parameterized query):
+                string query = @"INSERT INTO Tbl_Student(RollNo,Name,Email,DeleteFlag) 
+                                VALUES(@RollNo, @Name, @Email,0);";
+                var parameter = new StudentReqModel { ... };
 2. Parameterized UPDATE Operations
-        csharp
-        // Secure update with parameters
-        string query = @"UPDATE Tbl_Student SET 
-                        RollNo = @RollNo,
-                        Name = @Name,
-                        Email = @Email                           
-                        WHERE Id = @Id;";
-        var parameter = new StudentResModel { ... };
+                csharp
+                // Secure update with parameters
+                string query = @"UPDATE Tbl_Student SET 
+                                RollNo = @RollNo,
+                                Name = @Name,
+                                Email = @Email                           
+                                WHERE Id = @Id;";
+                var parameter = new StudentResModel { ... };
 3. Consistent Model Usage
 * Request Models (StudentReqModel, TeacherReqModel) for input operations
 * Response Models (StudentResModel, TeacherResModel) for output operations and internal processing

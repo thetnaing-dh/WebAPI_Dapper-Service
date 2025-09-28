@@ -26,24 +26,24 @@ This project demonstrates a clean Web API implementation using:
         └── DapperService.cs
 ## 🚀 Features
 ### Students Management
-✅ Get all active students
-✅ Create new student
-✅ Update student information
-✅ Soft delete student
+* ✅ Get all active students
+* ✅ Create new student
+* ✅ Update student information
+* ✅ Soft delete student
 
 ### Teachers Management
-✅ Get all active teachers
-✅ Create new teacher
-✅ Update teacher information
-✅ Soft delete teacher
+* ✅ Get all active teachers
+* ✅ Create new teacher
+* ✅ Update teacher information
+* ✅ Soft delete teacher
 
 ## 🔒 Security Improvements
 The updated controllers now use parameterized queries for all database operations, providing:
 
-✅ SQL Injection Protection - All user inputs are properly parameterized
-✅ Type Safety - Strongly typed parameters
-✅ Better Performance - Query plan reuse
-✅ Cleaner Code - More maintainable and readable
+* ✅ SQL Injection Protection - All user inputs are properly parameterized
+* ✅ Type Safety - Strongly typed parameters
+* ✅ Better Performance - Query plan reuse
+* ✅ Cleaner Code - More maintainable and readable
 
 ## 📊 Database Schema
 ### Students Table
@@ -222,11 +222,11 @@ The shared Dapper service provides three main methods:
 * Response Models (StudentResModel, TeacherResModel) for output operations and internal processing
 
 ## ⚠️ Best Practices Implemented
-✅ Parameterized Queries - Protection against SQL injection
-✅ Separation of Concerns - Clear separation between request and response models
-✅ Soft Deletes - Data preservation with DeleteFlag
-✅ Error Handling - Proper HTTP status codes and messages
-✅ Consistent Naming - Clear and descriptive method names
+* ✅ Parameterized Queries - Protection against SQL injection
+* ✅ Separation of Concerns - Clear separation between request and response models
+* ✅ Soft Deletes - Data preservation with DeleteFlag
+* ✅ Error Handling - Proper HTTP status codes and messages
+* ✅ Consistent Naming - Clear and descriptive method names
 
 ## 🚀 Future Enhancements
 * Add Dependency Injection configuration

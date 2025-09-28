@@ -35,13 +35,19 @@ namespace WebAPI_DapperService.Controllers
         }
 
         [HttpPost]
-        public IActionResult Insert(TeacherResModel teacherResModel)
+        public IActionResult Insert(TeacherReqModel teacherReqModel)
         {
             string query = $@"INSERT INTO Tbl_Teacher(Name,Phone,Subject,DeleteFlag) 
-                            VALUES('{teacherResModel.Name}' 
-                            ,'{teacherResModel.Phone}' 
-                            ,'{teacherResModel.Subject}',0);";
-            var result = _dapperService.Execute(query);
+                            VALUES(@Name,@Phone,@Subject,0);";
+
+            var parameter = new TeacherReqModel
+            {
+                Name = teacherReqModel.Name,
+                Phone = teacherReqModel.Phone,
+                Subject = teacherReqModel.Subject
+            };
+
+            var result = _dapperService.Execute(query,parameter);
             if(result > 0)
             {
                 return Ok("Inserting Successfully.");
@@ -53,7 +59,7 @@ namespace WebAPI_DapperService.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, TeacherResModel teacherResModel)
+        public IActionResult Update(int id, TeacherReqModel teacherReqModel)
         {
             string checkExistQuery = @"SELECT * FROM Tbl_Teacher WHERE deleteFlag = 0 AND Id = @Id;";                    
 
@@ -70,13 +76,15 @@ namespace WebAPI_DapperService.Controllers
                             , Subject = @Subject 
                             WHERE Id = @Id;";
 
-            var result = _dapperService.Execute(query, new
+            var parameter = new TeacherResModel
             {
                 Id = id,
-                Name = teacherResModel.Name,
-                Phone = teacherResModel.Phone,
-                Subject = teacherResModel.Subject
-            });
+                Name = teacherReqModel.Name,
+                Phone = teacherReqModel.Phone,
+                Subject = teacherReqModel.Subject
+            };
+
+            var result = _dapperService.Execute(query, parameter);
 
             if (result > 0)
             {
